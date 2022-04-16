@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "lib/werds/version"
-
 Gem::Specification.new do |spec|
   spec.name = "werds"
-  spec.version = Werds::VERSION
+  spec.version = "0.0.1"
   spec.authors = ["Francis"]
   spec.email = ["f@francis.fish"]
 

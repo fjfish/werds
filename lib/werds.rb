@@ -1,8 +1,59 @@
 # frozen_string_literal: true
 
-require_relative "werds/version"
-
-module Werds
+class Werds
   class Error < StandardError; end
-  # Your code goes here...
+
+  attr_reader :source, :match_pattern, :dictionary_name
+
+  def initialize(source:, match_pattern:, dictionary_name: "data/dictionary")
+    @source = source
+    @match_pattern = match_pattern
+    @dictionary_name = dictionary_name
+  end
+
+  def words
+    mask = make_mask source
+    [].tap do |strings|
+      IO.foreach(dictionary_name, chomp: true) do |s|
+        strings << s if re.match(s) && apply_mask(s, mask)
+      end
+    end
+  end
+
+  # private
+
+  def letter_count
+    @letter_count ||= match_pattern.length
+  end
+
+  def search_string
+    @search_string ||= do
+    replaced = match_pattern.gsub(/./, )
+
+    end
+  end
+
+  def re
+    @re ||= Regexp.new("^#{search_string}$")
+  end
+
+  def make_mask string
+    county = {}
+    string.each_char do |c|
+      county[c] ||= 0
+      county[c] += 1
+    end
+    county
+  end
+
+  def apply_mask string, mask
+    county = {}
+    string.each_char do |c|
+      county[c] ||= 0
+      county[c] += 1
+      return false if county[c] > mask[c]
+    end
+    true
+  end
+
 end
