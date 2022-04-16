@@ -8,26 +8,25 @@ The initial version was for the games where you have a word like PREFECT and the
 
 Some of these games lay the words out in a crossword-like structure, others just ask for the words ordered by size and alphabet.
 
-This is the simple case. For Wordle style games you need to start from all letters and then start creating groups that are in the word, aren't in the word, and where they might appear in the word.
-
 It uses a word list that was derived from the excellent tool [Scowl](http://wordlist.aspell.net/) with the command `./mk-list english british american 70 --accents strip > dictionary` - which gives is a list of several thousand words with no accents.
 
 Usage
 
 ```ruby
-wordfinder = Werd.new(source: 'pledge', match_pattern: '....')
-wordfinder.words
-
-[""]
-
+Werds.new(source:"pledge", match_pattern: "....").words
+=> ["deep", "dele", "edge", "geed", "geld", "glee", "peed", "peel"]
 ```
 
 This is saying you want to use the letters in the word pledge and find all words that are 4 characters long. Each `.` means use any letters from the source word, and the number of dots says how long. Source word doesn't have to be an actual word, it can be an combination of letters. If letters appear more than once then they should in the source word (for example `e` above).
 
+If you know some of the letters than put them into the match pattern like so:
+
 ```ruby
-wordfinder = Werd.new(source_word: 'pledge', match_pattern: 'l..')
+Werds.new(source: "galaxy", match_pattern: "..g.").words
+=> "alga"
 ```
 
+A solver that works better for Wordle style games is planned.
 
 ## Installation
 
@@ -44,10 +43,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install werds
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 

@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 RSpec.describe Werds do
-  it "has a version number" do
-    expect(Werds::VERSION).not_to be nil
-  end
-
-  it "does something useful" do
+  context "search_string" do
+    it "creates generic search string" do
+      finder =  Werds.new(source: "falafel", match_pattern: "...")
+      expect(finder.search_string).to eq("[falafel]" * 3)
+    end
+    it "allows specification of letter" do
+      finder =  Werds.new(source: "falafel", match_pattern: "f..")
+      expect(finder.search_string).to eq("f" + ("[alafel]" * 2))
+    end
   end
 end

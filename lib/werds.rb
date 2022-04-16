@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Werds
   class Error < StandardError; end
 
@@ -27,10 +25,14 @@ class Werds
   end
 
   def search_string
-    @search_string ||= do
-    replaced = match_pattern.gsub(/./, )
-
+    return @search_string if @search_string
+    matched_letters = match_pattern.gsub(".", "")
+    unmatched_letters = source.dup
+    if matched_letters.length > 0
+      # sub to only get the first/nth one so re will still match on other occurrences
+      matched_letters.each_char { |l| unmatched_letters.sub!(l, "") }
     end
+    @search_string = match_pattern.gsub(".", "[#{unmatched_letters}]")
   end
 
   def re

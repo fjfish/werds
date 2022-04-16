@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require "werds"
+require "spec_helper"
+require "byebug"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

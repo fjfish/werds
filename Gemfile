@@ -14,4 +14,5 @@ gem "rubocop", "~> 1.21"
 group :development, :test do
   gem 'guard-rspec'
   gem 'terminal-notifier-guard'
+  gem 'byebug'
 end
