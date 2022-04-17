@@ -7,11 +7,11 @@ Gem::Specification.new do |spec|
   spec.email = ["f@francis.fish"]
 
   spec.summary = spec.description = "Search for words using supplied letters"
-  spec.homepage = "https://example.com"
+  spec.homepage = "https://github.com/fjfish/werds"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
-  spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
+  spec.metadata["allowed_push_host"] = "https://github.com/fjfish/werds"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/fjfish/werds"
