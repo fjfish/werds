@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email = ["f@francis.fish"]
 
   spec.summary = spec.description = "Search for words using supplied letters"
-  spec.homepage = "https://github.com/fjfish/werds"
+  spec.homepage = "https://rubygems.org/gems/werds"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
