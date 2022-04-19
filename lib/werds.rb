@@ -3,13 +3,13 @@ class Werds
 
   attr_reader :source, :match_pattern, :dictionary_name
 
-  def initialize(source:, match_pattern:, dictionary_name: "data/dictionary")
+  def initialize(source:, dictionary_name: "data/dictionary")
     @source = source
-    @match_pattern = match_pattern
     @dictionary_name = dictionary_name
   end
 
-  def words
+  def words(match_pattern:)
+    @match_pattern = match_pattern
     mask = make_mask source
     [].tap do |strings|
       IO.foreach(dictionary_name, chomp: true) do |s|
@@ -25,35 +25,34 @@ class Werds
   end
 
   def search_string
-    return @search_string if @search_string
     matched_letters = match_pattern.gsub(".", "")
     unmatched_letters = source.dup
     if matched_letters.length > 0
       # sub to only get the first/nth one so re will still match on other occurrences
       matched_letters.each_char { |l| unmatched_letters.sub!(l, "") }
     end
-    @search_string = match_pattern.gsub(".", "[#{unmatched_letters}]")
+    match_pattern.gsub(".", "[#{unmatched_letters}]")
   end
 
   def re
-    @re ||= Regexp.new("^#{search_string}$")
+    Regexp.new("^#{search_string}$")
   end
 
   def make_mask string
-    county = {}
+    letter_counts = {}
     string.each_char do |c|
-      county[c] ||= 0
-      county[c] += 1
+      letter_counts[c] ||= 0
+      letter_counts[c] += 1
     end
-    county
+    letter_counts
   end
 
   def apply_mask string, mask
-    county = {}
+    letter_counts = {}
     string.each_char do |c|
-      county[c] ||= 0
-      county[c] += 1
-      return false if county[c] > mask[c]
+      letter_counts[c] ||= 0
+      letter_counts[c] += 1
+      return false if letter_counts[c] > mask[c]
     end
     true
   end
