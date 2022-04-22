@@ -3,8 +3,8 @@ class Werds
 
   attr_reader :source, :match_pattern, :dictionary_name
 
-  def initialize(source:, dictionary_name: "data/dictionary")
-    @source = source
+  def initialize(source:, dictionary_name: File.expand_path(File.dirname(__FILE__)) + "/../data/dictionary")
+    @source = source.downcase
     @dictionary_name = dictionary_name
   end
 
