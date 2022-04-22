@@ -3,13 +3,15 @@ class Werds
 
   attr_reader :source, :match_pattern, :dictionary_name
 
+  ELIPSIS = "…".freeze
+
   def initialize(source:, dictionary_name: File.expand_path(File.dirname(__FILE__)) + "/../data/dictionary")
-    @source = source.downcase
+    @source = source.gsub(/[[:space:]]/, '').downcase
     @dictionary_name = dictionary_name
   end
 
   def words(match_pattern:)
-    @match_pattern = match_pattern
+    @match_pattern = match_pattern.gsub(ELIPSIS,'...').gsub(/[[:space:]]/, '').downcase
     mask = make_mask source
     [].tap do |strings|
       IO.foreach(dictionary_name, chomp: true) do |s|
