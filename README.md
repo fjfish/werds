@@ -48,6 +48,10 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in the gemspec, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag.
 
+## Design considerations
+
+At the moment this gem loads the entire dictionary into memory so that it can be interrogated over and over again without having to keep re-reading the file. This is quite a large file, however. Future iterations of this gem will probably have scripts to load the contents of the file into a database and fire the regular expressions at that database. For the first iteration of this gem, solving simple puzzles from the command line, it is deemed adequate.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/werds. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/werds/blob/master/CODE_OF_CONDUCT.md).
