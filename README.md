@@ -11,7 +11,7 @@ It uses a word list that was derived from the excellent tool [Scowl](http://word
 Usage
 
 ```ruby
-wordy = Werds.new(source:"pledge"),
+wordy = Werds.new(source:"pledge")
 wordy.words(match_pattern: "....")
 => ["deep", "dele", "edge", "geed", "geld", "glee", "peed", "peel"]
 ```
@@ -21,7 +21,8 @@ This is saying you want to use the letters in the word pledge and find all words
 If you know some of the letters than put them into the match pattern like so:
 
 ```ruby
-Werds.new(source: "galaxy", match_pattern: "..g.").words
+wordy = Werds.new(source: "galaxy")
+wordy.words(match_pattern: "..g.")
 => "alga"
 ```
 
