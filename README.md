@@ -11,7 +11,8 @@ It uses a word list that was derived from the excellent tool [Scowl](http://word
 Usage
 
 ```ruby
-Werds.new(source:"pledge", match_pattern: "....").words
+wordy = Werds.new(source:"pledge"),
+wordy.words(match_pattern: "....")
 => ["deep", "dele", "edge", "geed", "geld", "glee", "peed", "peel"]
 ```
 
