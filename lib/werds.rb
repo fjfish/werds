@@ -22,10 +22,6 @@ class Werds
 
   # private
 
-  def letter_count
-    @letter_count ||= match_pattern.length
-  end
-
   def search_string
     matched_letters = match_pattern.gsub(".", "")
     unmatched_letters = source.dup
