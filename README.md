@@ -1,5 +1,7 @@
 # Werds
 
+Note: This gem is no longer under active development and has been superceded by the Elixir library [ex-werds](https://github.com/fjfish/ex-werds)
+
 This Gem is meant to help you with word matcher games.
 
 The initial version was for the games where you have a word like PREFECT and then have to find all the different word variants.
